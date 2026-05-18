@@ -25,14 +25,14 @@ components:
       scheme: bearer
       bearerFormat: JWT
 
-  apiKeyAuth:
-      type: apiKey
-      in: header
-      name: X-API-Key
+    apiKeyAuth:
+        type: apiKey
+        in: header
+        name: X-API-Key
 
-  basicAuth:
-    type: http
-    scheme: basic
+    basicAuth:
+      type: http
+      scheme: basic
 paths:
   /v1/users/{user_id}/tickets:
     $ref: "./paths/tickets/create.yaml"

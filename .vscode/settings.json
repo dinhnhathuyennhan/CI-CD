@@ -1,0 +1,6 @@
+{
+  "spectral.rulesetFile": ".spectral.js",
+  "spectral.validateFiles": [
+    "**/*.yaml"
+  ]
+}

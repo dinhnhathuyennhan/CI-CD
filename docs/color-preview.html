@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pink Pastel Theme - Color Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fff5f9 0%, #ffe4f0 100%);
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      background: linear-gradient(135deg, #ef1061 0%, #c70d4f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #831843;
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+      border: 2px solid #ffc2dd;
+      box-shadow: 0 4px 12px rgba(239, 16, 97, 0.08);
+    }
+
+    .section h2 {
+      color: #ef1061;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .color-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid #ffc2dd;
+      transition: transform 0.2s ease;
+    }
+
+    .color-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(239, 16, 97, 0.15);
+    }
+
+    .color-swatch {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .color-info {
+      padding: 15px;
+      background: white;
+    }
+
+    .color-name {
+      font-weight: 600;
+      color: #831843;
+      margin-bottom: 5px;
+    }
+
+    .color-hex {
+      font-family: 'Courier New', monospace;
+      color: #ef1061;
+      font-size: 14px;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .method-card {
+      border-radius: 12px;
+      border: 2px solid;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .method-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(239, 16, 97, 0.12);
+    }
+
+    .method-header {
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .method-badge {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .method-path {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #831843;
+    }
+
+    .button-demo {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ef1061 0%, #c70d4f 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(239, 16, 97, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 16px rgba(239, 16, 97, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #fff0f6;
+      color: #831843;
+      border: 2px solid #ffc2dd;
+    }
+
+    .btn-secondary:hover {
+      background: #ffe4f0;
+    }
+
+    .btn-outline {
+      background: white;
+      color: #ef1061;
+      border: 2px solid #ef1061;
+    }
+
+    .btn-outline:hover {
+      background: #fff0f6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 Pink Pastel Theme</h1>
+    <p class="subtitle">Primary Color: #ef1061 | Style: Modern, Energetic, Friendly</p>
+
+    <!-- Primary Colors -->
+    <div class="section">
+      <h2>Primary Colors</h2>
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background: #ef1061; color: white;">
+            #ef1061
+          </div>
+          <div class="color-info">
+            <div class="color-name">Hot Pink</div>
+            <div class="color-hex">#ef1061</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #c70d4f; color: white;">
+            #c70d4f
+          </div>
+          <div class="color-info">
+            <div class="color-name">Dark Pink</div>
+            <div class="color-hex">#c70d4f</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #831843; color: white;">
+            #831843
+          </div>
+          <div class="color-info">
+            <div class="color-name">Deep Pink</div>
+            <div class="color-hex">#831843</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #5c0d2e; color: white;">
+            #5c0d2e
+          </div>
+          <div class="color-info">
+            <div class="color-name">Darker Pink</div>
+            <div class="color-hex">#5c0d2e</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pastel Shades -->
+    <div class="section">
+      <h2>Pastel Shades</h2>
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background: #ffc2dd; color: #831843;">
+            #ffc2dd
+          </div>
+          <div class="color-info">
+            <div class="color-name">Light Pink</div>
+            <div class="color-hex">#ffc2dd</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #ffb3d9; color: #831843;">
+            #ffb3d9
+          </div>
+          <div class="color-info">
+            <div class="color-name">Soft Pink</div>
+            <div class="color-hex">#ffb3d9</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #fff5f9; color: #831843;">
+            #fff5f9
+          </div>
+          <div class="color-info">
+            <div class="color-name">Pale Pink</div>
+            <div class="color-hex">#fff5f9</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #fff0f6; color: #831843;">
+            #fff0f6
+          </div>
+          <div class="color-info">
+            <div class="color-name">Blush Pink</div>
+            <div class="color-hex">#fff0f6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HTTP Methods -->
+    <div class="section">
+      <h2>HTTP Method Colors</h2>
+      <div class="method-grid">
+        <div class="method-card" style="border-color: #ffc2dd; background: #fff5f9;">
+          <div class="method-header">
+            <span class="method-badge" style="background: #ffb3d9; color: #831843;">GET</span>
+            <span class="method-path">/api/users</span>
+          </div>
+        </div>
+        <div class="method-card" style="border-color: #ff9ec4; background: #fff0f6;">
+          <div class="method-header">
+            <span class="method-badge" style="background: #ff7ab0; color: #5c0d2e;">POST</span>
+            <span class="method-path">/api/users</span>
+          </div>
+        </div>
+        <div class="method-card" style="border-color: #ffd4e5; background: #fffafc;">
+          <div class="method-header">
+            <span class="method-badge" style="background: #ffadd2; color: #6b1039;">PUT</span>
+            <span class="method-path">/api/users/{id}</span>
+          </div>
+        </div>
+        <div class="method-card" style="border-color: #ef1061; background: #fff0f6;">
+          <div class="method-header">
+            <span class="method-badge" style="background: #ef1061; color: white;">DELETE</span>
+            <span class="method-path">/api/users/{id}</span>
+          </div>
+        </div>
+        <div class="method-card" style="border-color: #ff85b8; background: #fff5f9;">
+          <div class="method-header">
+            <span class="method-badge" style="background: #ff5c9d; color: white;">PATCH</span>
+            <span class="method-path">/api/users/{id}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="section">
+      <h2>Button Styles</h2>
+      <div class="button-demo">
+        <button class="btn btn-primary">Execute</button>
+        <button class="btn btn-secondary">Try it out</button>
+        <button class="btn btn-outline">Cancel</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

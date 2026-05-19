@@ -2,7 +2,6 @@
 
 # Script chạy kiểm tra API:
 # 1. Check inline schema (Python script)
-# 2. Validate với Spectral
 
 echo "================================================"
 echo "🔍 Step 1: Checking paths for inline schemas..."

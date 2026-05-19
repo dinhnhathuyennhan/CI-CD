@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Updates - Version Badge & Auth Section</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fef5ff 0%, #f0f9ff 100%);
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 30px;
+      border: 2px solid #e9d5ff;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08);
+    }
+
+    .section h2 {
+      color: #7c3aed;
+      font-size: 24px;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    /* ── Version Badge Preview ── */
+    .custom-header {
+      background: linear-gradient(135deg, #e9d5ff 0%, #dbeafe 100%);
+      border-bottom: 2px solid #c4b5fd;
+      padding: 20px 40px;
+      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.1);
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .custom-header h3 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .custom-header p {
+      margin: 8px 0 0 0;
+      color: #6b7280;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .version-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+      color: white;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-left: 16px;
+      border: 2px solid white;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.5);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: glow 2s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .version-badge::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 4px 16px rgba(124, 58, 237, 0.5);
+      }
+      50% {
+        box-shadow: 0 6px 24px rgba(124, 58, 237, 0.8);
+      }
+    }
+
+    @keyframes shine {
+      0% {
+        left: -50%;
+      }
+      100% {
+        left: 150%;
+      }
+    }
+
+    /* ── Authorization Section Preview ── */
+    .auth-wrapper {
+      background: linear-gradient(135deg, #faf5ff 0%, #eff6ff 100%);
+      border-radius: 16px;
+      padding: 32px;
+      border: 3px solid;
+      border-image: linear-gradient(135deg, #7c3aed, #2563eb) 1;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-wrapper::before {
+      content: '🔐';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 48px;
+      opacity: 0.1;
+    }
+
+    .auth-container {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 16px 0;
+      border: 2px solid #e9d5ff;
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
+      position: relative;
+      z-index: 1;
+    }
+
+    .auth-container h4 {
+      color: #7c3aed;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .auth-container h4::before {
+      content: '🔑';
+      font-size: 20px;
+    }
+
+    .auth-btn-wrapper {
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .authorize-btn {
+      background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .authorize-btn::before {
+      content: '🔓';
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+    .authorize-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .authorize-btn:hover {
+      box-shadow: 0 8px 28px rgba(124, 58, 237, 0.6);
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    .authorize-btn:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    .authorize-btn:active {
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .feature-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #e9d5ff;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature-list li::before {
+      content: '✨';
+      font-size: 18px;
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .comparison-item {
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid #e9d5ff;
+    }
+
+    .comparison-item h4 {
+      color: #7c3aed;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .old {
+      background: #f9fafb;
+      opacity: 0.7;
+    }
+
+    .new {
+      background: linear-gradient(135deg, #faf5ff 0%, #eff6ff 100%);
+      border-color: #7c3aed;
+      border-width: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ Preview Updates</h1>
+    <p class="subtitle">Version Badge & Authorization Section - Enhanced Design</p>
+
+    <!-- Version Badge Section -->
+    <div class="section">
+      <h2>1. Version Badge - Nổi Bật & Đặc Biệt</h2>
+
+      <div class="custom-header">
+        <h3>
+          🚀 P.A DEV API Documentation
+          <span class="version-badge">v1.0.0</span>
+        </h3>
+        <p>Internal API Documentation - Support Ticket System</p>
+      </div>
+
+      <h3 style="color: #7c3aed; margin: 24px 0 16px 0; font-size: 18px;">✨ Features:</h3>
+      <ul class="feature-list">
+        <li><strong>Gradient Background:</strong> Purple to Blue (#7c3aed → #2563eb)</li>
+        <li><strong>Glow Animation:</strong> Pulsing shadow effect (2s loop)</li>
+        <li><strong>Shine Effect:</strong> Moving light reflection (3s loop)</li>
+        <li><strong>White Border:</strong> 2px solid white for contrast</li>
+        <li><strong>Uppercase Text:</strong> Bold, 1px letter-spacing</li>
+        <li><strong>Enhanced Shadow:</strong> 0 4px 16px with 50% opacity</li>
+      </ul>
+
+      <div class="comparison">
+        <div class="comparison-item old">
+          <h4>❌ Trước (Cũ)</h4>
+          <ul style="list-style: none; padding: 0; font-size: 13px; color: #6b7280;">
+            <li>• Background: Yellow (#fef3c7)</li>
+            <li>• Border: 1px solid yellow</li>
+            <li>• Padding: 4px 12px</li>
+            <li>• Font size: 12px</li>
+            <li>• No animation</li>
+          </ul>
+        </div>
+        <div class="comparison-item new">
+          <h4>✅ Sau (Mới)</h4>
+          <ul style="list-style: none; padding: 0; font-size: 13px; color: #7c3aed; font-weight: 600;">
+            <li>• Background: Gradient purple-blue</li>
+            <li>• Border: 2px solid white</li>
+            <li>• Padding: 6px 18px</li>
+            <li>• Font size: 13px, uppercase</li>
+            <li>• Glow + Shine animations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authorization Section -->
+    <div class="section">
+      <h2>2. Authorization Section - Thiết Kế Đặc Biệt</h2>
+
+      <div class="auth-wrapper">
+        <div class="auth-container">
+          <h4>Bearer Authentication</h4>
+          <p style="color: #6b7280; margin-bottom: 16px;">
+            Enter your API token to authorize requests. The token will be included in the Authorization header.
+          </p>
+          <input
+            type="text"
+            placeholder="Enter your bearer token..."
+            style="width: 100%; padding: 12px; border: 2px solid #e9d5ff; border-radius: 8px; font-size: 14px; font-family: 'Courier New', monospace;"
+          >
+        </div>
+
+        <div class="auth-btn-wrapper">
+          <button class="authorize-btn">Authorize</button>
+        </div>
+      </div>
+
+      <h3 style="color: #7c3aed; margin: 24px 0 16px 0; font-size: 18px;">✨ Features:</h3>
+      <ul class="feature-list">
+        <li><strong>Gradient Background:</strong> Soft purple to blue gradient</li>
+        <li><strong>3D Border:</strong> Gradient border (purple → blue)</li>
+        <li><strong>Lock Icon:</strong> Large watermark 🔐 (opacity 0.1)</li>
+        <li><strong>Key Icon:</strong> Before section title 🔑</li>
+        <li><strong>Enhanced Button:</strong> Gradient with ripple effect on hover</li>
+        <li><strong>Unlock Icon:</strong> 🔓 before button text</li>
+        <li><strong>Hover Animation:</strong> Scale + lift effect with expanding ripple</li>
+        <li><strong>Enhanced Shadow:</strong> 0 8px 24px with 15% opacity</li>
+      </ul>
+
+      <div class="comparison">
+        <div class="comparison-item old">
+          <h4>❌ Trước (Cũ)</h4>
+          <ul style="list-style: none; padding: 0; font-size: 13px; color: #6b7280;">
+            <li>• Simple white background</li>
+            <li>• 2px solid border</li>
+            <li>• Basic button (10px 24px)</li>
+            <li>• Simple hover effect</li>
+            <li>• No icons</li>
+          </ul>
+        </div>
+        <div class="comparison-item new">
+          <h4>✅ Sau (Mới)</h4>
+          <ul style="list-style: none; padding: 0; font-size: 13px; color: #7c3aed; font-weight: 600;">
+            <li>• Gradient background</li>
+            <li>• 3px gradient border</li>
+            <li>• Enhanced button (14px 32px)</li>
+            <li>• Ripple + scale animation</li>
+            <li>• Lock 🔐 + Key 🔑 + Unlock 🔓</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="color: #7c3aed; margin: 24px 0 16px 0; font-size: 18px;">📝 CSS Code:</h3>
+      <div class="code-block">
+/* Version Badge */
+.version-badge {
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Authorization Wrapper */
+.auth-wrapper {
+  background: linear-gradient(135deg, #faf5ff, #eff6ff);
+  border: 3px solid;
+  border-image: linear-gradient(135deg, #7c3aed, #2563eb) 1;
+}
+
+/* Authorize Button */
+.authorize-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.6);
+}
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section" style="background: linear-gradient(135deg, #faf5ff 0%, #eff6ff 100%); border: 3px solid #7c3aed;">
+      <h2>🎯 Tổng Kết</h2>
+      <ul class="feature-list">
+        <li><strong>Version Badge:</strong> Gradient + Glow + Shine animations - Cực kỳ nổi bật!</li>
+        <li><strong>Authorization:</strong> Gradient border + Lock icons + Ripple effect - Đặc biệt & Cân đối!</li>
+        <li><strong>Tone Màu:</strong> Giữ nguyên Purple Pastel (#7c3aed) - Không đổi!</li>
+        <li><strong>Animations:</strong> Smooth, professional, không quá nhiều</li>
+        <li><strong>Accessibility:</strong> High contrast, clear focus states</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

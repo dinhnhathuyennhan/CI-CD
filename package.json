@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint:api": "bash scripts/lint-all.sh",
+    "lint:api": "bash scripts/lint-inline.sh",
     "lint:spectral": "spectral lint openapi.yaml --ruleset .spectral.js",
     "validate:api": "redocly lint openapi.yaml",
     "bundle:api": "redocly bundle openapi.yaml -o openapi-bundled.yaml",
-    "build:docs": "redocly build-docs openapi-bundled.yaml -o api-docs.html"
+    "build:docs": "node scripts/build-swagger-ui.js",
+    "build:docs:redocly": "redocly build-docs openapi-bundled.yaml --output api-docs-redocly.html"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
   },
   "homepage": "https://github.com/Dinh-Nhan/CI-CD#readme",
   "devDependencies": {
-    "@redocly/cli": "^2.30.4",
-    "@stoplight/spectral-cli": "^6.15.1"
+    "@redocly/cli": "^2.31.2",
+    "@stoplight/spectral-cli": "^6.15.1",
+    "swagger-ui-dist": "^5.11.0"
   }
 }

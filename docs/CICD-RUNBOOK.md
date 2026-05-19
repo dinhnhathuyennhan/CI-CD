@@ -298,30 +298,30 @@ grep -r "NonExistentSchema" --include="*.yaml" .
 ---
 
 
-## 3. GIT WORKFLOW
+## 3. LUỒNG GIT
 
-### 3.1 Branch Strategy
+### 3.1 Chiến Lược Nhánh
 
 #### INPUT
-- Feature/fix requirement
+- Yêu cầu feature/fix
 
 #### COMMAND
 ```bash
-# Always branch from develop
+# Luôn tạo nhánh từ develop
 git checkout develop
 git pull origin develop
 
-# Create feature branch
+# Tạo feature branch
 git checkout -b feat/schema-ticket-reopen
 ```
 
 #### EXPLANATION
-- `develop` = integration branch
-- `main` = production branch
-- Never commit directly to `main` or `develop`
+- `develop` = nhánh tích hợp
+- `main` = nhánh production
+- Không bao giờ commit trực tiếp vào `main` hoặc `develop`
 
-#### Branch Naming Convention
-| Type    | Pattern         | Example                       |
+#### Quy Ước Đặt Tên Nhánh
+| Loại    | Pattern         | Ví dụ                         |
 | ------- | --------------- | ----------------------------- |
 | Feature | `feat/schema-*` | `feat/schema-ticket-reopen`   |
 | Fix     | `fix/schema-*`  | `fix/schema-missing-401`      |
@@ -329,10 +329,10 @@ git checkout -b feat/schema-ticket-reopen
 
 ---
 
-### 3.2 Commit Message Format
+### 3.2 Format Commit Message
 
 #### INPUT
-- Staged changes
+- Các thay đổi đã staged
 
 #### COMMAND
 ```bash
@@ -349,37 +349,37 @@ scope: schemas | paths | rules | docs
 subject: imperative, lowercase, no period
 ```
 
-#### EXAMPLES
+#### VÍ DỤ
 ```bash
-# ✅ GOOD
+# ✅ TỐT
 git commit -m "feat(schemas): add CreateTicketRequest schema"
 git commit -m "fix(paths): add missing 401 response to /tickets endpoint"
 git commit -m "chore(spectral): update operationId validation rule"
 
-# ❌ BAD
+# ❌ TỆ
 git commit -m "add schema"
 git commit -m "Fixed bug"
 git commit -m "Update files"
 ```
 
 #### EXPLANATION
-- Conventional commits enable automated changelog generation
-- Scope helps identify which part of the codebase changed
-- Subject should complete the sentence: "This commit will..."
+- Conventional commits cho phép tạo changelog tự động
+- Scope giúp xác định phần nào của codebase đã thay đổi
+- Subject nên hoàn thành câu: "This commit will..."
 
 ---
 
-### 3.3 Push & Create Pull Request
+### 3.3 Push & Tạo Pull Request
 
 #### INPUT
-- Committed changes on feature branch
+- Các thay đổi đã commit trên feature branch
 
 #### COMMAND
 ```bash
-# Push to remote
+# Push lên remote
 git push origin feat/schema-ticket-reopen
 
-# Create PR via GitHub CLI (optional)
+# Tạo PR qua GitHub CLI (tùy chọn)
 gh pr create \
   --base develop \
   --title "feat(schemas): add ReopenTicketRequest schema" \
@@ -400,41 +400,41 @@ To github.com:Dinh-Nhan/CI-CD.git
 ```
 
 #### EXPLANATION
-- Push creates remote branch
-- PR triggers CI/CD validation pipeline
-- PR must pass all checks before merge is allowed
+- Push tạo remote branch
+- PR kích hoạt CI/CD validation pipeline
+- PR phải pass tất cả checks trước khi được phép merge
 
 ---
 
 ### 3.4 Pull Request Template
 
 ```markdown
-## 📋 Description
-<!-- What does this PR do? Why is it needed? -->
+## 📋 Mô Tả
+<!-- PR này làm gì? Tại sao cần thiết? -->
 
-Adds `ReopenTicketRequest` schema to support ticket reopening functionality.
+Thêm schema `ReopenTicketRequest` để hỗ trợ chức năng mở lại ticket.
 
-## 📁 Files Changed
-- `components/schemas/ticket/ReopenTicketRequest.yaml` (new)
-- `paths/tickets/reopen.yaml` (updated)
+## 📁 Files Thay Đổi
+- `components/schemas/ticket/ReopenTicketRequest.yaml` (mới)
+- `paths/tickets/reopen.yaml` (cập nhật)
 
-## ✅ Pre-Merge Checklist
-- [x] Ran `npm run lint:api` locally — no errors
-- [x] Schema file uses PascalCase naming
-- [x] operationId follows verbNoun format
-- [x] Response schemas use `$ref` (no inline schemas)
-- [x] Server-generated fields have `readOnly: true`
-- [x] All required error responses present (401, 403, 500)
-- [x] Commit message follows conventional format
+## ✅ Checklist Trước Khi Merge
+- [x] Đã chạy `npm run lint:api` trên local — không có lỗi
+- [x] File schema sử dụng PascalCase naming
+- [x] operationId tuân theo format verbNoun
+- [x] Response schemas sử dụng `$ref` (không có inline schemas)
+- [x] Các trường server-generated có `readOnly: true`
+- [x] Tất cả error responses bắt buộc đã có (401, 403, 500)
+- [x] Commit message tuân theo conventional format
 
-## 🔗 Related Links
+## 🔗 Liên Kết Liên Quan
 - Jira: PROJ-1234
 - API Docs: https://example.com/api-docs
 
-## 💬 Reviewer Notes
-<!-- Anything reviewers should pay special attention to -->
+## 💬 Ghi Chú Cho Reviewer
+<!-- Điều gì reviewer cần chú ý đặc biệt -->
 
-New schema follows existing patterns. No breaking changes.
+Schema mới tuân theo patterns hiện có. Không có breaking changes.
 ```
 
 ---
@@ -1639,7 +1639,7 @@ Woohoo! Your OpenAPI definition is valid. 🎉
 
 ---
 
-#### STEP 5: Commit & Push
+#### BƯỚC 5: Commit & Push
 
 **COMMAND:**
 ```bash
@@ -1661,7 +1661,7 @@ git push origin feat/schema-ticket-reopen
 
 ---
 
-#### STEP 6: Create Pull Request
+#### BƯỚC 6: Tạo Pull Request
 
 **COMMAND:**
 ```bash
@@ -1680,7 +1680,7 @@ https://github.com/Dinh-Nhan/CI-CD/pull/42
 
 ---
 
-#### STEP 7: CI/CD Validation (GitHub Actions)
+#### BƯỚC 7: CI/CD Validation (GitHub Actions)
 
 **GitHub Actions Output:**
 ```
@@ -1702,11 +1702,11 @@ https://github.com/Dinh-Nhan/CI-CD/pull/42
 
 ---
 
-#### STEP 8: Merge & Deploy
+#### BƯỚC 8: Merge & Deploy
 
 **COMMAND:**
 ```bash
-# After PR approval
+# Sau khi PR được approve
 gh pr merge 42 --squash
 ```
 
@@ -1742,16 +1742,16 @@ Files changed:
 
 ---
 
-### 6.2 Example 2: Common Mistakes (Failure Path)
+### 6.2 Ví Dụ 2: Các Lỗi Phổ Biến (Đường Thất Bại)
 
-#### SCENARIO
-Developer creates endpoint with multiple violations
+#### KỊCH BẢN
+Developer tạo endpoint với nhiều vi phạm
 
 ---
 
-#### MISTAKE 1: Inline Schema
+#### LỖI 1: Inline Schema
 
-**FILE:** `paths/tickets/feedback.yaml` (WRONG)
+**FILE:** `paths/tickets/feedback.yaml` (SAI)
 ```yaml
 post:
   operationId: submitFeedback
@@ -1781,9 +1781,9 @@ Checking paths/tickets/feedback.yaml...
 Error: Process completed with exit code 1.
 ```
 
-**FIX:**
+**CÁCH SỬA:**
 ```bash
-# Step 1: Create schema file
+# Bước 1: Tạo file schema
 cat > components/schemas/ticket/SubmitFeedbackRequest.yaml << 'EOF'
 type: object
 required:
@@ -1798,10 +1798,10 @@ properties:
     maxLength: 1000
 EOF
 
-# Step 2: Update path file
+# Bước 2: Cập nhật file path
 ```
 
-**FILE:** `paths/tickets/feedback.yaml` (FIXED)
+**FILE:** `paths/tickets/feedback.yaml` (ĐÃ SỬA)
 ```yaml
 post:
   operationId: submitFeedback
@@ -1814,9 +1814,9 @@ post:
 
 ---
 
-#### MISTAKE 2: Wrong operationId Format
+#### LỖI 2: Format operationId Sai
 
-**FILE:** `paths/tickets/feedback.yaml` (WRONG)
+**FILE:** `paths/tickets/feedback.yaml` (SAI)
 ```yaml
 post:
   operationId: submit_feedback  # ❌ snake_case
@@ -1830,7 +1830,7 @@ post:
 ✖ 1 problem (1 error, 0 warnings, 0 infos, 0 hints)
 ```
 
-**FIX:**
+**CÁCH SỬA:**
 ```yaml
 post:
   operationId: submitFeedback  # ✅ camelCase
@@ -1838,9 +1838,9 @@ post:
 
 ---
 
-#### MISTAKE 3: Missing 401/403 Responses
+#### LỖI 3: Thiếu 401/403 Responses
 
-**FILE:** `paths/tickets/feedback.yaml` (WRONG)
+**FILE:** `paths/tickets/feedback.yaml` (SAI)
 ```yaml
 post:
   security:

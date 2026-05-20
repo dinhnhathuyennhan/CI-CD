@@ -13,27 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { path: new }
-
       - uses: actions/checkout@v4
         with: { ref: main, path: old }
 
-      - name: Cache oasdiff
-        uses: actions/cache@v4
-        with:
-          path: /usr/local/bin/oasdiff
-          key: oasdiff-${{ runner.os }}-v1.10.27
-
       - name: Install oasdiff
+        env:
+          VERSION: 1.15.3
         run: |
-          if ! command -v oasdiff &> /dev/null; then
-            curl -fsSL https://github.com/oasdiff/oasdiff/releases/download/v1.10.27/oasdiff_1.10.27_linux_amd64.tar.gz | tar -xz
-            sudo mv oasdiff /usr/local/bin/
-          fi
+          curl -fsSL https://github.com/oasdiff/oasdiff/releases/download/v${VERSION}/oasdiff_${VERSION}_linux_amd64.tar.gz | tar -xz
+          sudo mv oasdiff /usr/local/bin/
 
-      - name: Check changelog changes
-        id: diff
-        run: |
-          oasdiff changelog old/openapi.yaml new/openapi.yaml || true
+      - name: Check API changelog
+        run: oasdiff changelog old/openapi.yaml new/openapi.yaml || true
 
       # - name: Check breaking changes
       #   id: diff

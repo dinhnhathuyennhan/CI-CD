@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Run Spectral Lint
-        run: npm run lint:api
+        run: npm run lint:inline
 
       - name: Run Redocly Validation
         run: npm run validate:api

@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint:api": "bash scripts/lint-inline.sh",
+    "lint:inline": "bash scripts/lint-inline.sh",
     "lint:spectral": "spectral lint openapi.yaml --ruleset .spectral.js",
     "validate:api": "redocly lint openapi.yaml",
+
     "bundle:api": "redocly bundle openapi.yaml -o openapi-bundled.yaml",
     "build:docs": "node scripts/build-swagger-ui.js",
     "build:docs:redocly": "redocly build-docs openapi-bundled.yaml --output api-docs-redocly.html"

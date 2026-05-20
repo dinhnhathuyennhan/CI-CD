@@ -383,9 +383,9 @@ const html = `<!DOCTYPE html>
     .swagger-ui .auth-wrapper {
       background: white;
       border-radius: 12px;
-      // padding: 24px;
-      // border: 2px solid #e9d5ff;
-      // box-shadow: 0 4px 12px rgba(139, 92, 246, 0.08);
+      /* padding: 24px;
+      border: 2px solid #e9d5ff;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.08); */
     }
 
     .swagger-ui .auth-btn-wrapper {

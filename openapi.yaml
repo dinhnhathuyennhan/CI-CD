@@ -26,9 +26,9 @@ components:
       bearerFormat: JWT
 
     apiKeyAuth:
-        type: apiKey
-        in: header
-        name: X-API-Key
+      type: apiKey
+      in: header
+      name: X-API-Key
 
     basicAuth:
       type: http

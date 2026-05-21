@@ -33,7 +33,7 @@ put:
         application/json:
           schema:
             allOf:
-              - $ref: "../../components/schemas/core/StandardSuccess.yaml"
+              - $ref: "../../schemas/core/StandardSuccess.yaml"
               - type: object
                 properties:
                   data:

@@ -20,7 +20,7 @@ properties:
     type: integer
     readOnly: true
     description: "Số thứ tự của bản ghi đầu tiên trên trang hiện tại"
-    example: 21 
+    example: 21
   to:
     type: integer
     readOnly: true

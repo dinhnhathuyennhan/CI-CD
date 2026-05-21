@@ -22,7 +22,7 @@ post:
         schema:
           $ref: "../../components/schemas/ticket/ReopenTicketRequest.yaml"
   responses:
-    "200":
+    "201":
       description: Mở lại ticket thành công
       content:
         application/json:
@@ -74,4 +74,3 @@ post:
                   code: 4467
                   message: "Câu hỏi đang được mở"
                   data: null
-    

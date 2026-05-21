@@ -1,8 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 // Đọc OpenAPI bundled spec
-const openapiSpec = fs.readFileSync('openapi-bundled.yaml', 'utf8');
+const openapiSpec = fs.readFileSync("openapi-bundled.yaml", "utf8");
 
 // HTML template với Swagger UI và Pastel Theme
 const html = `<!DOCTYPE html>
@@ -438,7 +438,7 @@ const html = `<!DOCTYPE html>
   <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-standalone-preset.js" charset="UTF-8"></script>
   <script>
     window.onload = function() {
-      const spec = \`${openapiSpec.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`;
+      const spec = \`${openapiSpec.replace(/`/g, "\\`").replace(/\$/g, "\\$")}\`;
 
       window.ui = SwaggerUIBundle({
         spec: jsyaml.load(spec),
@@ -473,5 +473,5 @@ const html = `<!DOCTYPE html>
 </html>`;
 
 // Ghi file
-fs.writeFileSync('api-docs.html', html, 'utf8');
-console.log('✅ Swagger UI documentation built successfully: api-docs.html');
+fs.writeFileSync("api-docs.html", html, "utf8");
+console.log("✅ Swagger UI documentation built successfully: api-docs.html");

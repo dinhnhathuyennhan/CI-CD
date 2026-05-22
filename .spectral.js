@@ -1,5 +1,6 @@
 import { truthy, pattern } from '@stoplight/spectral-functions';
 import privateEndpoint from './functions/private-must-have-401-403.js';
+import enumHasDescription from './functions/enum-has-description.js';
 
 export default {
   rules: {
@@ -59,8 +60,8 @@ export default {
     'enum-schema-must-have-description': {
       message: 'Schema có enum phải có description giải thích ý nghĩa.',
       severity: 'warn',
-      given: '$.components.schemas[*].properties[*][?(@.enum)]',
-      then: { field: 'description', function: truthy },
+      given: '$.components.schemas[*].properties[*]',
+      then: { function: enumHasDescription },
     },
 
     'private-endpoint-must-have-401-403': {

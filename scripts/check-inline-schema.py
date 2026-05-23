@@ -8,6 +8,10 @@ import sys
 import yaml
 from pathlib import Path
 
+ROOT_DIR = Path(__file__).resolve().parent.parent
+
+paths_dir = ROOT_DIR / 'openapi' / 'paths'
+
 def check_schema(schema, path=""):
     """
     Kiểm tra xem schema có phải inline không
@@ -80,7 +84,6 @@ def check_file(file_path):
 
 def main():
     """Main function"""
-    paths_dir = Path('paths')
 
     if not paths_dir.exists():
         print("❌ paths/ directory not found")

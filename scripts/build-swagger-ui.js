@@ -2,7 +2,10 @@ const fs = require("fs");
 const path = require("path");
 
 // Đọc OpenAPI bundled spec
-const openapiSpec = fs.readFileSync("openapi-bundled.yaml", "utf8");
+const openapiSpec = fs.readFileSync(
+  "dist/openapi-bundled.yaml",
+  "utf8"
+);
 
 // HTML template với Swagger UI và Pastel Theme
 const html = `<!DOCTYPE html>
@@ -473,5 +476,9 @@ const html = `<!DOCTYPE html>
 </html>`;
 
 // Ghi file
-fs.writeFileSync("api-docs.html", html, "utf8");
+fs.writeFileSync(
+  "public/api-docs.html",
+  html,
+  "utf8"
+);
 console.log("✅ Swagger UI documentation built successfully: api-docs.html");

@@ -4,12 +4,11 @@ on:
   push:
     branches: [main, develop]
     paths:
-      - "components/**"
-      - "paths/**"
-      - "openapi.yaml"
-      - ".redocly.yaml"
-      - ".spectral.yaml"
-      - "scripts/lint-all.sh"
+      - "openapi/**"
+      - "scripts/**"
+      - ".spectral.js"
+      - "redocly.yaml"
+      - "package.json"
 
 concurrency:
   group: deploy-${{ github.ref }}
@@ -62,7 +61,7 @@ jobs:
       - name: Prepare Deployment Folder
         run: |
           mkdir -p _site
-          cp api-docs.html _site/index.html
+          cp public/api-docs.html _site/index.html
 
       # =========================
       # Upload GitHub Pages Artifact

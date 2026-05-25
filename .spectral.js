@@ -1,11 +1,12 @@
-import { truthy, pattern } from '@stoplight/spectral-functions';
+import { schema, truthy, pattern } from '@stoplight/spectral-functions';
 import privateEndpoint from './functions/private-must-have-401-403.js';
 import enumHasDescription from './functions/enum-has-description.js';
+import hasRequestBodyMustHave400 from './functions/has-request-body-must-have-400.js'
 
 export default {
   rules: {
     'operation-id-verb-noun': {
-      message: 'operationId "{{value}}" sai format. Phải dùng camelCase — ví dụ: listUsers, createOrder, reopenTicket.',
+      message: 'operationId "{{value}}" sai format, operationId phải dùng camelCase và bắt đầu bằng động từ — ví dụ: listUsers, createOrder, reopenTicket.',
       severity: 'error',
       given: '$.paths[*][get,post,put,patch,delete].operationId',
       then: { function: pattern, functionOptions: { match: '^[a-z][a-zA-Z0-9]+$' } },
@@ -97,6 +98,48 @@ export default {
       severity: 'info',
       given: '$.paths[*].post.responses',
       then: { field: '201', function: truthy },
+    },
+
+    // New rule
+
+    'must-have-servers': {
+      message: 'API phải khai báo ít nhất 1 server.',
+      severity: 'warn',
+      given: '$',
+      then: {field: 'servers', function: truthy}
+    },
+
+    'info-must-have-contact': {
+      message: 'API phải có thông tin contact.',
+      severity: 'info',
+      given: '$.info',
+      then: {field: 'contact', function: truthy}
+    },
+
+    'request-body-must-have-400': {
+      severity: 'warn',
+      given: '$.paths[*][post,put,patch]',
+      then: {function: hasRequestBodyMustHave400}
+    },
+
+    'delete-must-have-204': {
+      message: 'DELETE nên trả 204 No Content.',
+      severity: 'warn',
+      given: '$.paths[*].delete',
+      then: { field: 'responses.204', function: truthy },
+    },
+
+    'operation-must-have-tags': {
+      message: 'Operation phải có ít nhất 1 tag.',
+      severity: 'warn',
+      given: '$.paths[*][get,post,put,patch,delete]',
+      then: {
+        field: 'tags',
+        function: schema,
+        functionOptions: {
+          schema: {type: 'array', minItems: 1}
+        }
+      }  
     },
   },
 };

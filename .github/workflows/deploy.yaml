@@ -4,10 +4,8 @@ on:
   push:
     branches: [main, develop]
     paths:
-      - "openapi/**"
+      - "dist/**"
       - "scripts/**"
-      - ".spectral.js"
-      - "redocly.yaml"
       - "package.json"
 
 concurrency:
@@ -42,12 +40,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      # =========================
-      # Bundle OpenAPI
-      # =========================
-      - name: Bundle OpenAPI Specification
-        run: npm run bundle:api
 
       # =========================
       # Build Docs

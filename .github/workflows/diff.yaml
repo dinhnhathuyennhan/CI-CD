@@ -24,7 +24,8 @@ jobs:
           sudo mv oasdiff /usr/local/bin/
 
       - name: Check API changelog
-        run: oasdiff changelog old/openapi.yaml new/openapi.yaml || true
+        run: oasdiff changelog old/dist/openapi-bundled.yaml new/dist/openapi-bundled.yaml || true
+
 
       # - name: Check breaking changes
       #   id: diff

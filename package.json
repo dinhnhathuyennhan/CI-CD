@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint:inline": "bash scripts/lint-inline.sh",
-    "lint:spectral": "spectral lint openapi/openapi.yaml --ruleset .spectral.js --verbose",
-    "validate:api": "redocly lint openapi/openapi.yaml",
+    "lint:spectral": "spectral lint dist/openapi-bundled.yaml --ruleset .spectral.js --verbose",
+    "validate:api": "redocly lint dist/openapi-bundled.yaml",
     "bundle:api": "redocly bundle openapi/openapi.yaml -o dist/openapi-bundled.yaml",
     "build:docs": "node scripts/build-swagger-ui.js",
     "build:docs:redocly": "redocly build-docs dist/openapi-bundled.yaml --output public/api-docs-redocly.html"
@@ -18,7 +17,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Dinh-Nhan/CI-CD/issues"
   },
